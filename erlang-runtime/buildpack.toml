@@ -1,0 +1,15 @@
+# Buildpack API version
+api = "0.2"
+
+# Buildpack ID and metadata
+[buildpack]
+id = "io.github.carlo-colombo.erlang-runtime"
+version = "0.0.1"
+name = "Erlang Runtime Buildpack"
+
+# Stacks that the buildpack will work with
+[[stacks]]
+id = "org.cloudfoundry.stacks.cflinuxfs3"
+
+[[stacks]]
+id = "io.github.carlo-colombo.elixir-builder"

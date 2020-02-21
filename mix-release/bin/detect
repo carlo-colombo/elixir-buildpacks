@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+[ -z "$DEBUG" ] || set -x
+
+if [[ ! -f mix.exs ]]; then
+   exit 100
+fi
+
+plan="$2"
+
+echo '
+[[requires]]
+name = "erlang"
+
+[[requires]]
+name = "elixir"
+' > $plan

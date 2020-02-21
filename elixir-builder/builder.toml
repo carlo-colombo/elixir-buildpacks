@@ -1,0 +1,27 @@
+# Buildpacks to include in builder
+[[buildpacks]]
+uri = "../elixir-runtime"
+
+[[buildpacks]]
+uri = "../erlang-runtime"
+
+[[buildpacks]]
+uri = "../mix-release"
+
+[[buildpacks]]
+uri = "../elixir"
+
+[[order]]
+
+    [[order.group]]
+    id = "io.github.carlo-colombo.elixir"
+    version = "0.0.1"
+    name = "Elixir Buildpack"
+
+# Stack that will be used by the builder
+[stack]
+id = "io.github.carlo-colombo.elixir-builder"
+# This image is used at runtime
+run-image = "carlocolombo/elixir-builder:run"
+# This image is used at build-time
+build-image = "carlocolombo/elixir-builder:build"
