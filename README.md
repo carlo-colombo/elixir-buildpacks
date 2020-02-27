@@ -11,6 +11,10 @@ In addition `carlocolombo/elixir-builder` is a builder based on `ubuntu:bionic` 
 
 This stack support `org.cloudfoundry.stacks.cflinuxfs3` (`cloudfoundry/cnb:cflinuxfs3`) and `io.github.carlo-colombo.elixir-builder`
 
+### Know limitations
+
+* It does not support `Phoenix`, it has been only tested with _easy_ elixir projects as https://github.com/carlo-colombo/telegram-poller
+
 ## How to build an image with pack
 
 ### Using the builder image
