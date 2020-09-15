@@ -13,16 +13,12 @@ mkdir -p "$erlanglayer"/bin
 
 echo -e 'launch = false\nbuild = true' > "$erlanglayer.toml"
 
-erlang_url="https://packages.erlang-solutions.com/erlang/debian/pool/esl-erlang_22.2.6-1~ubuntu~bionic_amd64.deb"
-
-wget -q -O /tmp/erlang.deb  "$erlang_url" 
-
-ar p /tmp/erlang.deb data.tar.xz \
+ar p /packages/erlang data.tar.xz \
  | unxz \
  | tar x -C $erlanglayer
 
 sed -i "s|/usr/lib/erlang|$erlanglayer/usr/lib/erlang|" \
-    "$erlanglayer/usr/lib/erlang/erts-10.6.4/bin/erl" \
-    "$erlanglayer/usr/lib/erlang/bin/erl"
+    ${erlanglayer}/usr/lib/erlang/erts-*/bin/erl \
+    ${erlanglayer}/usr/lib/erlang/bin/erl
 
 ln -s "$erlanglayer"/usr/bin/* "$erlanglayer"/bin 

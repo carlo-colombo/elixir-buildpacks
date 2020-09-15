@@ -1,8 +1,15 @@
 FROM ubuntu:bionic
 
 RUN apt-get update && \
-  apt-get install -y xz-utils ca-certificates binutils wget unzip rsync && \
+  apt-get install -y --no-install-recommends \
+    xz-utils ca-certificates binutils wget unzip rsync git && \
   rm -rf /var/lib/apt/lists/*
+
+ARG ERLANG_VERSION="23.0.3-1"
+ARG ELIXIR_VERSION="v1.10.4"
+
+ADD --chown=1000:1000 "https://packages.erlang-solutions.com/erlang/debian/pool/esl-erlang_${ERLANG_VERSION}~ubuntu~bionic_amd64.deb" /packages/erlang
+ADD --chown=1000:1000 "https://github.com/elixir-lang/elixir/releases/download/${ELIXIR_VERSION}/Precompiled.zip" /packages/elixir
 
 ARG cnb_uid=1000
 ARG cnb_gid=1000

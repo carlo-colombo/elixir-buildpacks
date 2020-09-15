@@ -11,8 +11,4 @@ elixirlayer="$layersdir"/elixir
 
 echo -e 'launch = false\nbuild = true' > "$elixirlayer.toml"
 
-elixir_url="https://github.com/elixir-lang/elixir/releases/download/v1.10.1/Precompiled.zip"
-
-wget -q -O /tmp/Precompiled.zip  "$elixir_url"
-
-unzip -u -q /tmp/Precompiled.zip  -d "$elixirlayer"
+unzip -u -q /packages/elixir  -d "$elixirlayer"
