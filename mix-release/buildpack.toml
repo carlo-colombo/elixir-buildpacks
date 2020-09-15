@@ -4,7 +4,7 @@ api = "0.2"
 # Buildpack ID and metadata
 [buildpack]
 id = "io.github.carlo-colombo.mix-release"
-version = "0.0.1"
+version = "0.0.2"
 name = "elixir mix release Buildpack"
 
 # Stacks that the buildpack will work with

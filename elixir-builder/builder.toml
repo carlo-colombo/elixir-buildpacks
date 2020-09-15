@@ -15,8 +15,7 @@ uri = "../elixir"
 
     [[order.group]]
     id = "io.github.carlo-colombo.elixir"
-    version = "0.0.1"
-    name = "Elixir Buildpack"
+    version = "0.0.2"
 
 # Stack that will be used by the builder
 [stack]

@@ -4,7 +4,7 @@ api = "0.2"
 # Buildpack ID and metadata
 [buildpack]
 id = "io.github.carlo-colombo.elixir"
-version = "0.0.1"
+version = "0.0.2"
 name = "Elixir Buildpack"
 
 # Stacks that the buildpack will work with
@@ -12,15 +12,15 @@ name = "Elixir Buildpack"
 
     [[order.group]]
     id = "io.github.carlo-colombo.erlang-runtime"
-    version = "0.0.1"
+    version = "0.0.2"
     name = "Elixir Runtime Buildpack"
 
     [[order.group]]
     id = "io.github.carlo-colombo.elixir-runtime"
-    version = "0.0.1"
+    version = "0.0.2"
     name = "Erlang Runtime Buildpack"
 
     [[order.group]]
     id = "io.github.carlo-colombo.mix-release"
-    version = "0.0.1"
+    version = "0.0.2"
     name = "Elixir Mix Release Buildpack"
