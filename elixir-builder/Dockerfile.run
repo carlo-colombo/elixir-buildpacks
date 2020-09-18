@@ -4,6 +4,8 @@ RUN apt-get update && \
   apt-get install -y ca-certificates && \
   rm -rf /var/lib/apt/lists/*
 
+ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
+
 ARG cnb_uid=1000
 ARG cnb_gid=1000
 ARG stack_id="io.github.carlo-colombo.elixir-builder"
