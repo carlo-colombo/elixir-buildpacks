@@ -28,7 +28,7 @@ mix deps.get --only-prod
 
 MIX_ENV=prod mix release --overwrite --path $releaselayer/
 
-mix run --no-start --eval '
+MIX_ENV=prod mix run --no-start --eval '
     [release_layer, layers_dir] = System.argv()
     {:ok, file} = File.open("#{layers_dir}/launch.toml", [:write])
     app_name = Mix.Project.config[:app] |> Atom.to_string
