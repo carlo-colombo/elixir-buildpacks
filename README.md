@@ -7,7 +7,7 @@ A collection of buildpacks to build images of elixir projects
 1. `mix-release` download project dependencies and create an [Elixir Release](https://elixir-lang.org/blog/2019/06/24/elixir-v1-9-0-released/#releases)
 1. `elixir` meta buildpack that define the order in which buildpack run
 
-In addition `carlocolombo/elixir-builder` is a builder based on `ubuntu:bionic` including the 4 buildpacks.
+In addition `rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder` is a builder based on `ubuntu:bionic` including the 4 buildpacks.
 
 This stack support `org.cloudfoundry.stacks.cflinuxfs3` (`cloudfoundry/cnb:cflinuxfs3`) and `io.github.carlo-colombo.elixir-builder`
 
@@ -22,7 +22,7 @@ This stack support `org.cloudfoundry.stacks.cflinuxfs3` (`cloudfoundry/cnb:cflin
 ```bash
 pack build <elixir project image> \
   --path <elixir project> \
-  --builder carlocolombo/elixir-builder
+  --builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder
 ```
 
 ### Using individual buildpacks
@@ -34,7 +34,7 @@ pack build <elixir project image> \
   -b ./elixir-runtime/ \
   -b ./erlang-runtime/ \
   -b ./mix-release/ \
-  --builder carlocolombo/elixir-builder
+  --builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder
 ```
 
 ## How to create the builder image
@@ -44,4 +44,4 @@ cd elixir-builder
 ./build.sh
 ```
 
-It create an image on the local docker named `carlocolombo/elixir-builder`
+It create an image on the local docker named `rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder`

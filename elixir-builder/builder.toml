@@ -21,6 +21,6 @@ uri = "../elixir"
 [stack]
 id = "io.github.carlo-colombo.elixir-builder"
 # This image is used at runtime
-run-image = "carlocolombo/elixir-builder:run"
+run-image = "rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder:run"
 # This image is used at build-time
-build-image = "carlocolombo/elixir-builder:build"
+build-image = "rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder:build"
