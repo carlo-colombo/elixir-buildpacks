@@ -13,7 +13,15 @@ This stack support `org.cloudfoundry.stacks.cflinuxfs3` (`cloudfoundry/cnb:cflin
 
 ### Know limitations
 
-* It does not support `Phoenix`, it has been only tested with _easy_ elixir projects as https://github.com/carlo-colombo/telegram-poller
+* It at least partially support `phoenix`, it requires to pass in `SECRET_KEY_BASE` as environment variable. For example
+
+```bash
+pack build dashboard \
+  --path . \
+  --builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder \
+  -e DEBUG=1 \
+  -e SECRET_KEY_BASE="$(mix phx.gen.secret)"
+```
 
 ## How to build an image with pack
 
