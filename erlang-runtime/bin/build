@@ -21,4 +21,4 @@ sed -i "s|/usr/lib/erlang|$erlanglayer/usr/lib/erlang|" \
     ${erlanglayer}/usr/lib/erlang/erts-*/bin/erl \
     ${erlanglayer}/usr/lib/erlang/bin/erl
 
-ln -s "$erlanglayer"/usr/bin/* "$erlanglayer"/bin 
+ln -s "$erlanglayer"/usr/bin/* "$erlanglayer"/bin
