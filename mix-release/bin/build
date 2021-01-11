@@ -13,28 +13,36 @@ applayer="$layersdir"/app
 mkdir -p "$releaselayer"
 mkdir -p "$applayer"
 
-# 3. MAKE elixir AVAILABLE DURING LAUNCH
 echo -e 'launch = true' > "$releaselayer.toml"
 echo -e 'launch = false\ncache = true' > "$applayer.toml"
 
 rsync -pahr ./* "$applayer"
-rm -rf ./*
 cd "$applayer"
 
 mix local.rebar --force
 mix local.hex --force
 
+
 mix deps.get --only-prod
 
-MIX_ENV=prod mix release --overwrite --path $releaselayer/
+MIX_ENV=prod mix release "$RELEASE" --overwrite --path "$releaselayer/"
 
-MIX_ENV=prod mix run --no-start --eval '
-    [release_layer, layers_dir] = System.argv()
-    {:ok, file} = File.open("#{layers_dir}/launch.toml", [:write])
-    app_name = Mix.Project.config[:app] |> Atom.to_string
-    launch_toml = """
-                  processes = [{ type = "web", command = "#{release_layer}/bin/#{app_name} start"}]
-                  """
- 
+
+if [[ -z "${RELEASE}" ]]; then
+    MIX_ENV=prod mix run --no-start --eval '
+        [release_layer, layers_dir] = System.argv()
+        {:ok, file} = File.open("#{layers_dir}/launch.toml", [:write])
+        app_name = Mix.Project.config[:app] |> Atom.to_string
+        launch_toml = """
+                    processes = [{ type = "web", command = "#{release_layer}/bin/#{app_name} start"}]
+                    """
+
     :ok = IO.binwrite(file, launch_toml)
 ' -- "$releaselayer" "$layersdir"
+else
+    cat << EOF > "${layersdir}/launch.toml"
+
+processes = [{ type = "web", command = "${releaselayer}/bin/${RELEASE} start"}]
+
+EOF
+fi
