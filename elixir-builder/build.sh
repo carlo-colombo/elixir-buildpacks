@@ -8,5 +8,5 @@ do
 done
 
 pack create-builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder \
-    --builder-config ./builder.toml \
+    --config ./builder.toml \
     --publish
