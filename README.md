@@ -11,9 +11,22 @@ In addition `rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder` is a builder base
 
 This stack support `org.cloudfoundry.stacks.cflinuxfs3` (`cloudfoundry/cnb:cflinuxfs3`) and `io.github.carlo-colombo.elixir-builder`
 
+### Umbrella applications
+
+To create a release from an umbrella application run from the root of the application defining the release to build with the `RELEASE` env variable
+
+```bash
+pack build dashboard \
+  --path . \
+  --builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder \
+  -e RELEASE=dashboard -e SECRET_KEY_BASE=asdadasdasd
+```
+
+Note: is not supported to build individual release from the app folder, as in app dependency and configuration would be outside of the directory passed to `pack`.
+
 ### Know limitations
 
-* It at least partially support `phoenix`, it requires to pass in `SECRET_KEY_BASE` as environment variable. For example
+-   It at least partially support `phoenix`, it requires to pass in `SECRET_KEY_BASE` as environment variable. For example
 
 ```bash
 pack build dashboard \
