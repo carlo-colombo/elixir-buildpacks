@@ -3,8 +3,8 @@ set -eo pipefail
 
 [ -z "$DEBUG" ] || set -x
 
-ERLANG_VERSION="23.1-1"
-ELIXIR_VERSION="v1.11.2"
+ERLANG_VERSION="23.2.3-1"
+ELIXIR_VERSION="v1.11.3"
 
 set +e
 wget "https://packages.erlang-solutions.com/erlang/debian/pool/esl-erlang_${ERLANG_VERSION}~ubuntu~bionic_amd64.deb" .\
