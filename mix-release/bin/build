@@ -25,10 +25,16 @@ mix local.hex --force
 
 mix deps.get --only-prod
 
-MIX_ENV=prod mix release "$RELEASE" --overwrite --path "$releaselayer/"
+MIX_ENV=prod mix release ${RELEASE} --overwrite --path "$releaselayer/"
 
 
-if [[ -z "${RELEASE}" ]]; then
+if [[ ${RELEASE} ]]; then
+    cat << EOF > "${layersdir}/launch.toml"
+
+processes = [{ type = "web", command = "${releaselayer}/bin/${RELEASE} start"}]
+
+EOF
+else
     MIX_ENV=prod mix run --no-start --eval '
         [release_layer, layers_dir] = System.argv()
         {:ok, file} = File.open("#{layers_dir}/launch.toml", [:write])
@@ -39,10 +45,4 @@ if [[ -z "${RELEASE}" ]]; then
 
     :ok = IO.binwrite(file, launch_toml)
 ' -- "$releaselayer" "$layersdir"
-else
-    cat << EOF > "${layersdir}/launch.toml"
-
-processes = [{ type = "web", command = "${releaselayer}/bin/${RELEASE} start"}]
-
-EOF
 fi
