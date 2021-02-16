@@ -15,7 +15,7 @@ uri = "../elixir"
 
     [[order.group]]
     id = "io.github.carlo-colombo.elixir"
-    version = "0.0.2"
+    version = "0.0.3"
 
 # Stack that will be used by the builder
 [stack]

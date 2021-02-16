@@ -4,7 +4,7 @@ api = "0.2"
 # Buildpack ID and metadata
 [buildpack]
 id = "io.github.carlo-colombo.elixir-runtime"
-version = "0.0.2"
+version = "0.0.3"
 name = "Elixir Runtime Buildpack"
 
 # Stacks that the buildpack will work with
