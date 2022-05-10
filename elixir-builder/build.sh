@@ -3,10 +3,13 @@ set -eo pipefail
 
 [ -z "$DEBUG" ] || set -x
 
-ERLANG_VERSION="23.2.3-1"
-ELIXIR_VERSION="v1.11.3"
+ERLANG_VERSION="24.3.3-1"
+ELIXIR_VERSION="v1.13.4"
 
 set +e
+
+mkdir ./packages
+
 wget "https://packages.erlang-solutions.com/erlang/debian/pool/esl-erlang_${ERLANG_VERSION}~ubuntu~bionic_amd64.deb" .\
     -O ./packages/erlang \
     --no-clobber
@@ -21,6 +24,6 @@ do
     docker push "rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder:$tag"
 done
 
-pack create-builder rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder \
+pack builder create rg.nl-ams.scw.cloud/carlo-colombo/elixir-builder \
     --config ./builder.toml \
     --publish
